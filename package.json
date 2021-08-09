@@ -1,0 +1,28 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "![Design preview for the Todo app coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khazin/Todo-app.git"
+  },
+  "author": "Khazin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khazin/Todo-app/issues"
+  },
+  "homepage": "https://github.com/khazin/Todo-app#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-terser": "^2.0.1",
+    "node-sass": "^6.0.1",
+    "sass": "^1.35.2"
+  }
+}
