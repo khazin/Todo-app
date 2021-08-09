@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Todo app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="dist/css/main.css" />
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <div class="container --light">
+      <section class="section__list --light">
+        <div class="input__wrapper --add --light">
+          <div class="checkbox__box --light">
+            <input type="checkbox" class="--input" id="checkboxAdd" />
+          </div>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+          <label for="checkboxAdd" class="checkbox__label --add --light">
+            <input type="text" class="add --light" placeholder="Create a new todo..."/>
+          </label>
+        </div>
 
-  Todo
+        <div class="list__wrapper">
+          <div class="input__wrapper --show --light">
+            <div class="checkbox__box --light">
+              <input type="checkbox" class="--input" id="add" />
+            </div>
+            <label for="add" class="checkbox__label --add --light">
+              Jog for 3 rounds
+            </label>
+            <div class="--delete"></div>
+          </div>
+          
+        </div>
+      </section>
+    </div>
 
-  <!-- Add dynamic number --> items left
+    <!-- Add dynamic number -->
+    items left All Active Completed Clear Completed Drag and drop to reorder
+    list
 
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <div class="attribution">
+    <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+  </div> -->
+  <script src="dist/js/main.js"></script>
+  </body>
 </html>
