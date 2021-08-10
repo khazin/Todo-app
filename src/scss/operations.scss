@@ -1,0 +1,68 @@
+/**************
+OPERATION STYLE
+***************/
+.operations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "amount clear"
+    "show show";
+  row-gap: 1.6rem;
+}
+.items__amount,
+.btn.--clear {
+  background-color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  height: 5rem;
+  color: var(--Dark-Grayish-Blue-light);
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+}
+.items__amount {
+  grid-area: amount;
+  padding-left: 2rem;
+  border-bottom-left-radius: 4px;
+}
+
+.btn {
+  &__wrapper {
+    grid-area: show;
+    background-color: white;
+    height: 5rem;
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.--show {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--Dark-Grayish-Blue-light);
+    text-decoration: none;
+    cursor: pointer;
+    &.--active {
+      padding: 0 1.8rem;
+    }
+  }
+}
+
+.btn.--clear {
+  grid-area: clear;
+  padding-left: 5.5rem;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+}
+
+.btn {
+  &:hover {
+    color: var(--Very-Dark-Grayish-Blue-light);
+  }
+  &:focus,
+  &:active {
+    color: var(--Bright-Blue);
+  }
+}

@@ -32,12 +32,13 @@ LIST STYLE
 
 /*input wrapper style*/
 .input__wrapper {
-    width: 100%;
-    &.--add {
+  width: 100%;
+  &.--add {
     height: 4.8rem;
   }
   &.--show {
-    height: 5.2rem;
+    height: 5.1rem;
+    margin-bottom: 0.2rem;
   }
   &.--light {
     background-color: white;
@@ -48,7 +49,7 @@ LIST STYLE
 
   border: none;
   border-radius: 5px;
-  padding: 0 2rem;
+  padding: 0 1.7rem 0 2rem;
 
   display: flex;
   align-items: center;
@@ -59,10 +60,6 @@ LIST STYLE
   height: 2rem;
   width: 2rem;
   position: relative;
-
-  & .--input {
-    display: none;
-  }
 
   &.--light {
     color: var(--Very-Dark-Grayish-Blue-light);
@@ -94,23 +91,34 @@ LIST STYLE
 
     cursor: pointer;
   }
+}
 
-  &.checked::after {
+/*checkbox checked style*/
+.checkbox__box.checked {
+  &::after {
     background-image: url(../../images/icon-check.svg),
       linear-gradient(to bottom right, var(--Check-Background));
     background-repeat: no-repeat;
     background-position: center;
+  }
+  & ~ .checkbox__label {
+    text-decoration: 1.5px line-through;
+    // text-decoration-line: line-through;
+    opacity: 0.3;
   }
 }
 
 /*checkbox label style*/
 .checkbox__label {
   position: relative;
-  width: 100%;
+  width: 75%;
   margin-left: 1.4rem;
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--Dark-Grayish-Blue-light);
+  & .--input {
+    display: none;
+  }
 }
 
 /*add input style*/
@@ -142,19 +150,16 @@ LIST STYLE
 /*show list style*/
 .list__wrapper {
   margin-top: 1.6rem;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 0.2rem;
 }
 .--delete {
-  // position: absolute;
   height: 1.8rem;
   width: 1.8rem;
+  margin-left: auto;
 
-  // right: 2.2rem;
   background-image: url(../../images/icon-cross.svg);
   background-repeat: no-repeat;
   background-size: 1.3rem;
   background-position: center;
+
+  cursor: pointer;
 }
