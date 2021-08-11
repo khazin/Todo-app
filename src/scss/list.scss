@@ -5,35 +5,13 @@ LIST STYLE
 .section__list {
   width: 87%;
   min-height: 100vh;
-  padding-top: 10.9rem;
-
-  position: relative;
-  &.--light {
-    background-image: url(../../images/icon-moon.svg);
-  }
-
-  &.--dark {
-    background-image: url(../../images/icon-sun.svg);
-  }
-  background-repeat: no-repeat;
-  background-position: 100% 4.8rem;
-  background-size: 2rem 2rem;
-
-  &::before {
-    content: "TODO";
-    position: absolute;
-    top: 4.85rem;
-    font-size: 2.6rem;
-    letter-spacing: 1.05rem;
-    font-weight: 700;
-    color: var(--Very-Light-Gray);
-  }
 }
 
 /*input wrapper style*/
 .input__wrapper {
   width: 100%;
   &.--add {
+    margin-top: 3.4rem;
     height: 4.8rem;
   }
   &.--show {
@@ -86,7 +64,6 @@ LIST STYLE
     border-radius: 50%;
 
     top: 50%;
-    // left: -3.2rem;
     transform: translateY(-50%);
 
     cursor: pointer;

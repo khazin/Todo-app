@@ -17,46 +17,41 @@
   <body>
     <div class="container --light">
       <section class="section__list --light">
+
+        <div class="header --light">
+          <div class="title">TODO</div>
+          <div class="mode --light"></div>
+        </div>
+
         <div class="input__wrapper --add --light">
 
-          <div class="checkbox__box --light">
+          <div class="checkbox__box --add --light" id="checkboxAdd">
           </div>
 
-          <label for="checkboxAdd" class="checkbox__label --add --light">
-            <input type="checkbox" class="--input" id="checkboxAdd" />
+          <div class="checkbox__label --add --light">
+            <!-- <input type="checkbox" class="--input" id="checkboxAdd" /> -->
             <input type="text" class="add --light" placeholder="Create a new todo..."/>
-          </label>
+          </div>
         </div>
 
         <div class="list__wrapper">
-
-          <!-- <div class="input__wrapper --show --light">
-            <div class="checkbox__box --light">
-            </div>
-
-            <label for="" class="checkbox__label --show --light">
-              <input type="checkbox" class="--input" id="" />
-              Jog for 3 rounds
-            </label>
-            <div class="--delete"></div>
-          </div> -->
-          
+          <!-- append toto list here -->
         </div>
+
         <div class="operations">
-          <div class="items__amount --light">5 items left</div>
+          <div class="items__amount --light">0 items left</div>
           <div class="btn__wrapper --light">
-            <a href="#all" class="btn --show --all">All</a>
-            <a href="#active" class="btn --show --active">Active</a>
-            <a href="#completed" class="btn --show --completed">Completed</a>
+            <a href="#all" class="btn --show --all --light">All</a>
+            <a href="#active" class="btn --show --active --light">Active</a>
+            <a href="#completed" class="btn --show --completed --light">Completed</a>
           </div>
           <div class="btn --clear --light">Clear Completed</div>
         </div>
+
+        <div class="footer --light">Drag and drop to reorder list</div>
       </section>
     </div>
 
-    
-    Drag and drop to reorder
-    list
 
     <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

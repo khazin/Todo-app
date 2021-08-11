@@ -1,0 +1,16 @@
+.footer{
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 4.2rem;
+    font-weight: 600;
+
+    &.--light{
+        color: var(--Dark-Grayish-Blue-light);
+
+    }
+
+    &.--dark {
+        color: var(--Dark-Grayish-Blue-dark);
+
+    }
+}
