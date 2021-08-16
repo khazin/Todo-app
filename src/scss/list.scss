@@ -88,8 +88,9 @@ LIST STYLE
 /*checkbox label style*/
 .checkbox__label {
   position: relative;
-  width: 75%;
-  margin-left: 1.4rem;
+  width: 77%;
+  margin-left: 1.1rem;
+  padding-top: .3rem;
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--Dark-Grayish-Blue-light);
@@ -140,3 +141,4 @@ LIST STYLE
 
   cursor: pointer;
 }
+

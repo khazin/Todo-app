@@ -36,3 +36,14 @@ body {
   
 
 }
+
+.draggable {
+    cursor: move;
+    & * {
+      cursor: move;
+    }
+    &.dragging {
+      opacity: 0.5;
+    }
+  }
+  

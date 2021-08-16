@@ -15,9 +15,116 @@ setInterval(() => {
   checkbox = document.querySelectorAll(".checkbox__box");
 }, 500);
 
-let listSet = new Set();
-let listSetChecked = new Set();
+let todoList = {
+  currentList: {
+    items: [
+      "Jog around the park 3x",
+      "10 minute meditation",
+      "Read for 1 hour",
+      "Pick up groceries",
+      "Complete Todo App on Frontend Mentor",
+    ],
+    add: function (value) {
+      this.items.push(value);
+    },
+    delete: function (value) {
+      let index = this.items.indexOf(value);
+      this.items.splice(index, 1);
+    },
+    has: function (value) {
+      if (this.items.includes(value)) return true;
+      return false;
+    },
+    sort: function (movedItemValue, afterMovedItemValue) {
+      if (afterMovedItemValue == "none") {
+        this.delete(movedItemValue);
+        this.add(movedItemValue);
+      } else {
+        this.delete(movedItemValue);
+        let afterMovedItemIndex = this.items.indexOf(afterMovedItemValue);
+        this.items.splice(afterMovedItemIndex, 0, movedItemValue);
+      }
+    },
+  },
+
+  checkedList: {
+    items: ["Complete online JavaScript course"],
+    add: function (value) {
+      this.items.push(value);
+    },
+    delete: function (value) {
+      let index = this.items.indexOf(value);
+      this.items.splice(index, 1);
+    },
+    has: function (value) {
+      if (this.items.includes(value)) return true;
+      return false;
+    },
+    clear: function () {
+      this.items = [];
+    },
+  },
+
+  getAllList: function () {
+    let list = this.currentList.items.concat(this.checkedList.items);
+    return list;
+  },
+};
+let activeList = todoList.currentList;
+let checkedList = todoList.checkedList;
 let mode = "light";
+
+function drag() {
+  document.addEventListener("dragstart", (e) => {
+    let element = e.target;
+    if (element.classList.contains("draggable")) {
+      element.classList.add("dragging");
+    }
+  });
+  document.addEventListener("dragend", (e) => {
+    let element = e.target;
+    if (element.classList.contains("draggable")) {
+      element.classList.remove("dragging");
+    }
+  });
+
+  listWrapper.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(listWrapper, e.clientY);
+    const draggable = document.querySelector(".dragging");
+
+    if (afterElement == null) {
+      activeList.sort(draggable.id, 'none');
+      listWrapper.appendChild(draggable);
+    } else {
+      activeList.sort(draggable.id, afterElement.id);
+      listWrapper.insertBefore(draggable, afterElement);
+    }
+  });
+
+  function getDragAfterElement(listWrapper, y) {
+    //put non-dragging elements in an array
+    const draggableElements = [
+      ...listWrapper.querySelectorAll(".draggable:not(.dragging)"),
+    ];
+    // console.log(draggableElements);
+    let draggableElement = draggableElements.reduce(
+      (closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      },
+      { offset: Number.NEGATIVE_INFINITY, element: null }
+    );
+
+    return draggableElement.element;
+  }
+}
 
 // clear the whole list function
 function clearList() {
@@ -27,49 +134,40 @@ function clearList() {
 }
 
 // generate new list item function
-function generateNewItem(list, checked) {
+function generateNewItem(list, checked, draggable) {
   let newInputWrapper = document.createElement("div");
-  let newList = '';
+  let newList = `<div class="checkbox__box --${mode} ${checked}"></div> 
+    <label class="checkbox__label --show --${mode}"> 
+    <input type="checkbox" class="--input"/> 
+   ${list} 
+    </label>
+    <div class="--delete"></div>;`;
 
-  if (mode == "light") {
-   newList =
-    '<div class="checkbox__box --light '+checked+' "></div>' +
-    '<label class="checkbox__label --show --light">' +
-    '<input type="checkbox" class="--input"/>' +
-    list +
-    "</label>" +
-    '<div class="--delete""></div>';
-    newInputWrapper.classList.add("input__wrapper", "--show", "--light");
-  } else {
-    newList =
-    '<div class="checkbox__box --dark '+checked+' "></div>' +
-    '<label class="checkbox__label --show --dark">' +
-    '<input type="checkbox" class="--input"/>' +
-    list +
-    "</label>" +
-    '<div class="--delete""></div>';
-    newInputWrapper.classList.add("input__wrapper", "--show", "--dark");
-  }
- 
-
-    newInputWrapper.id = list;
-    newInputWrapper.innerHTML = newList;
-    listWrapper.appendChild(newInputWrapper);
+  newInputWrapper.classList.add(
+    "input__wrapper",
+    "--show",
+    "--" + mode + "",
+    draggable.class
+  );
+  newInputWrapper.draggable = draggable.attribute;
+  newInputWrapper.id = list;
+  newInputWrapper.innerHTML = newList;
+  listWrapper.appendChild(newInputWrapper);
 }
 
 // show active items funvtion
 function showActiveItem() {
   //append all list back to UI
-  listSet.forEach((list) => {
-    generateNewItem(list,'');
+  activeList.items.forEach((list) => {
+    generateNewItem(list, "", { attribute: true, class: "draggable" });
   });
 }
 
 // show checked items
 function showCheckedItem() {
   //append all list back to UI
-  listSetChecked.forEach((list) => {
-    generateNewItem(list, 'checked');
+  checkedList.items.forEach((list) => {
+    generateNewItem(list, "checked", { attribute: false });
   });
 }
 
@@ -96,7 +194,7 @@ function showItem() {
       showActiveItem();
     }
 
-    itemAmount.innerHTML = listSet.size + " items left";
+    itemAmount.innerHTML = activeList.items.length + " items left";
   }, 1);
 }
 
@@ -122,15 +220,15 @@ function checkItem() {
       //add and delete value from list set
       let id = element.parentNode.id;
 
-      if (listSet.has(id)) {
-        listSet.delete(id);
-        listSetChecked.add(id);
+      if (activeList.has(id)) {
+        activeList.delete(id);
+        checkedList.add(id);
       } else {
-        listSet.add(id);
-        listSetChecked.delete(id);
+        activeList.add(id);
+        checkedList.delete(id);
       }
 
-    itemAmount.innerHTML = listSet.size + " items left";
+      itemAmount.innerHTML = activeList.items.size + " items left";
     }
   });
 }
@@ -152,25 +250,21 @@ function addItem() {
         // if item is already done
         if (checkboxAdd.classList.contains("checked")) {
           // save item into checked list set
-          listSetChecked.add(element.value);
-          // showItem();
+          checkedList.add(element.value);
 
           //if item is not done
-        } else if (!listSet.has(element.value)) {
+        } else if (!activeList.has(element.value)) {
           // save item into list set
-          listSet.add(element.value);
-          // showItem();
+          activeList.add(element.value);
         } else {
           // validate duplicate
           alert("You have already add this in your list!");
           return false;
         }
-          showItem();
-
+        showItem();
       }
 
       element.value = "";
-      //   console.log(listSet);
     }
   });
 }
@@ -183,22 +277,21 @@ function deleteItem() {
       // get id of item
       let id = element.parentNode.id;
       //delete from set list if exist
-      if (listSetChecked.has(id)) {
-        listSetChecked.delete(id);
+      if (checkedList.has(id)) {
+        checkedList.delete(id);
       }
-      if (listSet.has(id)) {
-        listSet.delete(id);
+      if (activeList.has(id)) {
+        activeList.delete(id);
       }
-      //   console.log(listSet);
+      //   console.log(activeList);
     } else if (element.classList.contains("--clear")) {
-      listSetChecked.clear();
+      checkedList.clear();
     }
-    
-      // refresh list
-      showItem();
+
+    // refresh list
+    showItem();
   });
 }
-
 
 function toggleMode() {
   document.addEventListener("click", (e) => {
@@ -223,7 +316,7 @@ function toggleMode() {
         toggleClassMode(inputWrapper[i]);
         toggleClassMode(checkbox[i]);
       }
-      
+
       toggleClassMode(textboxAdd);
       toggleClassMode(itemAmount);
       toggleClassMode(btnClear);
@@ -238,3 +331,4 @@ showList();
 checkItem();
 addItem();
 deleteItem();
+drag();
