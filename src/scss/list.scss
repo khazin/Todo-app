@@ -2,6 +2,9 @@
 LIST STYLE
 **********/
 
+/*
+MOBILE LAYOUT
+*************/
 .section__list {
   width: 87%;
   min-height: 100vh;
@@ -142,3 +145,57 @@ LIST STYLE
   cursor: pointer;
 }
 
+/*
+DESKTOP LAYOUT
+**************/
+@media screen and (min-width: 1366px) {
+  .section__list {
+    width: 37.5%;
+  }
+  /*input wrapper style*/
+.input__wrapper {
+  &.--add {
+    margin-top: 4rem;
+    height: 6.4rem;
+  }
+  &.--show {
+    height: 6.3rem;
+    margin-bottom: 0.2rem;
+  }
+ 
+  padding: 0 1.7rem 0 2.3rem;
+}
+/*checkbox style*/
+.checkbox__box {
+  height: 2.5rem;
+  width: 2.5rem;
+
+
+  &::before,
+  &::after {
+ 
+    height: 2.5rem;
+    width: 2.5rem;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+  }
+}
+
+/*checkbox label style*/
+.checkbox__label {
+  margin-left: 2.2rem;
+  font-size: 1.8rem;
+}
+
+/*add input style*/
+.add {
+  font-size: 1.8rem;
+}
+
+/*show list style*/
+.list__wrapper {
+  margin-top: 2.4rem;
+}
+}

@@ -36,7 +36,7 @@ let todoList = {
       return false;
     },
     sort: function (movedItemValue, afterMovedItemValue) {
-      if (afterMovedItemValue == "none") {
+      if (afterMovedItemValue == null) {
         this.delete(movedItemValue);
         this.add(movedItemValue);
       } else {
@@ -94,7 +94,7 @@ function drag() {
     const draggable = document.querySelector(".dragging");
 
     if (afterElement == null) {
-      activeList.sort(draggable.id, 'none');
+      activeList.sort(draggable.id);
       listWrapper.appendChild(draggable);
     } else {
       activeList.sort(draggable.id, afterElement.id);
@@ -199,6 +199,7 @@ function showItem() {
 }
 
 function showList() {
+    showItem();  
   document.addEventListener("click", (e) => {
     let element = e.target;
     if (element.classList.contains("btn")) {
@@ -220,6 +221,9 @@ function checkItem() {
       //add and delete value from list set
       let id = element.parentNode.id;
 
+      if (element.classList.contains("--add")) {
+        return false;
+      }
       if (activeList.has(id)) {
         activeList.delete(id);
         checkedList.add(id);
@@ -235,10 +239,10 @@ function checkItem() {
 
 // add item function
 function addItem() {
-  document.addEventListener("keyup", (e) => {
+  textboxAdd.addEventListener("keyup", (e) => {
     let element = e.target;
 
-    if (e.key == "Enter" && element.classList.contains("add")) {
+    if (e.key == "Enter") {
       // get item value
       let newItem = element.value;
 
@@ -246,7 +250,7 @@ function addItem() {
       if (newItem == "") {
         alert("Please enter a new item!");
         return false;
-      } else {
+      } 
         // if item is already done
         if (checkboxAdd.classList.contains("checked")) {
           // save item into checked list set
@@ -262,7 +266,7 @@ function addItem() {
           return false;
         }
         showItem();
-      }
+      
 
       element.value = "";
     }
@@ -326,8 +330,8 @@ function toggleMode() {
   });
 }
 
-toggleMode();
 showList();
+toggleMode();
 checkItem();
 addItem();
 deleteItem();

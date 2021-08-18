@@ -1,6 +1,9 @@
 /**************
 OPERATION STYLE
 ***************/
+/*
+DESKTOP LAYOUT
+*************/
 .operations {
   display: grid;
   grid-template-columns: repeat(2, 50%);
@@ -93,4 +96,52 @@ OPERATION STYLE
   &:active {
     color: var(--Bright-Blue);
   }
+}
+
+/*
+DESKTOP LAYOUT
+*************/
+@media screen and (min-width: 1366px) {
+  .operations {
+    display: initial;
+
+  }
+
+  .items__amount,
+.btn.--clear {
+  height: 5rem;
+
+ 
+  font-size: 1.1rem;
+  font-weight: 700;
+  width: 100%;
+
+  display: initial;
+  // align-items: center;
+}
+
+.btn {
+  &__wrapper {
+    height: 5rem;
+    border-radius: 4px;
+
+    display: initial;
+    // align-items: center;
+    // justify-content: center;
+
+  
+  }
+
+  &.--show {
+    font-size: 1.4rem;
+    font-weight: 900;
+   
+
+
+    &.--active {
+      padding: 0 0rem;
+    }
+  }
+}
+
 }
