@@ -97,6 +97,8 @@ MOBILE LAYOUT
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--Dark-Grayish-Blue-light);
+  cursor: pointer;
+
   & .--input {
     display: none;
   }
@@ -132,6 +134,9 @@ MOBILE LAYOUT
 .list__wrapper {
   margin-top: 1.6rem;
 }
+
+/*delete button style*/
+
 .--delete {
   height: 1.8rem;
   width: 1.8rem;
@@ -145,10 +150,14 @@ MOBILE LAYOUT
   cursor: pointer;
 }
 
+.dragging {
+  opacity: 0.5;
+}
+
 /*
 DESKTOP LAYOUT
 **************/
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 786px) {
   .section__list {
     width: 37.5%;
   }
@@ -164,6 +173,8 @@ DESKTOP LAYOUT
   }
  
   padding: 0 1.7rem 0 2.3rem;
+
+ 
 }
 /*checkbox style*/
 .checkbox__box {
@@ -198,4 +209,12 @@ DESKTOP LAYOUT
 .list__wrapper {
   margin-top: 2.4rem;
 }
+
+/*delete button style*/
+.--delete {
+  display: none;
+  background-size: 1.8rem;
+}
+
+
 }

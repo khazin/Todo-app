@@ -141,7 +141,7 @@ function generateNewItem(list, checked, draggable) {
     <input type="checkbox" class="--input"/> 
    ${list} 
     </label>
-    <div class="--delete"></div>;`;
+    <div class="--delete"></div>`;
 
   newInputWrapper.classList.add(
     "input__wrapper",

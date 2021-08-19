@@ -37,16 +37,7 @@ MOBILE LAYOUT
 
 }
 
-.draggable {
-    cursor: move;
-    & * {
-      cursor: move;
-    }
-    &.dragging {
-      opacity: 0.5;
-    }
-  }
-  
+
   
 /*
 DESKTOP LAYOUT

@@ -5,21 +5,19 @@ FOOTER STYLE
 /*
 MOBILE LAYOUT
 *************/
-.footer{
-    text-align: center;
-    font-size: 1.3rem;
-    margin-top: 4.2rem;
-    font-weight: 600;
+.footer {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 4.2rem;
+  font-weight: 600;
 
-    &.--light{
-        color: var(--Dark-Grayish-Blue-light);
+  &.--light {
+    color: var(--Dark-Grayish-Blue-light);
+  }
 
-    }
-
-    &.--dark {
-        color: var(--Dark-Grayish-Blue-dark);
-
-    }
+  &.--dark {
+    color: var(--Dark-Grayish-Blue-dark);
+  }
 }
 
 /*
@@ -27,20 +25,7 @@ DESKTOP LAYOUT
 *************/
 
 @media screen and (min-width: 1366px) {
-    .footer{
-        text-align: center;
-        font-size: 1.3rem;
-        margin-top: 4.2rem;
-        font-weight: 600;
-    
-        &.--light{
-            color: var(--Dark-Grayish-Blue-light);
-    
-        }
-    
-        &.--dark {
-            color: var(--Dark-Grayish-Blue-dark);
-    
-        }
-    }
+  .footer {
+    margin-top: 7.2rem;
+  }
 }

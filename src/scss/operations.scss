@@ -2,7 +2,7 @@
 OPERATION STYLE
 ***************/
 /*
-DESKTOP LAYOUT
+MOBILE LAYOUT
 *************/
 .operations {
   display: grid;
@@ -68,7 +68,7 @@ DESKTOP LAYOUT
   &.--show {
     font-size: 1.4rem;
     font-weight: 900;
-   
+
     text-decoration: none;
     cursor: pointer;
 
@@ -76,9 +76,7 @@ DESKTOP LAYOUT
       padding: 0 1.8rem;
     }
   }
-}
 
-.btn {
   &.--light {
     color: var(--Dark-Grayish-Blue-light);
     &:hover {
@@ -91,57 +89,32 @@ DESKTOP LAYOUT
       color: var(--Dark-Grayish-Blue-dark-hover);
     }
   }
-  
+
   &:focus,
   &:active {
     color: var(--Bright-Blue);
   }
 }
 
+/*---------------------------------------------------*/
+
 /*
 DESKTOP LAYOUT
 *************/
 @media screen and (min-width: 1366px) {
   .operations {
-    display: initial;
-
+    display: flex;
+    height: 3rem;
   }
 
   .items__amount,
-.btn.--clear {
-  height: 5rem;
-
- 
-  font-size: 1.1rem;
-  font-weight: 700;
-  width: 100%;
-
-  display: initial;
-  // align-items: center;
-}
-
-.btn {
-  &__wrapper {
-    height: 5rem;
-    border-radius: 4px;
-
-    display: initial;
-    // align-items: center;
-    // justify-content: center;
-
-  
+  .btn.--clear {
+    font-size: 1.3rem;
   }
-
-  &.--show {
-    font-size: 1.4rem;
-    font-weight: 900;
-   
-
-
-    &.--active {
-      padding: 0 0rem;
-    }
+  .items__amount {
+    padding-right: 2.5rem;
   }
-}
-
+  .btn.--clear {
+    padding-right: 2.5rem;
+  }
 }
